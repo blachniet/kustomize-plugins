@@ -1,0 +1,24 @@
+---
+resources:
+- busybox.yaml
+- nginx.yaml
+
+images:
+- name: nginx
+  newTag: latest
+
+transformers:
+- |-
+  apiVersion: k8s.blachniet.com/v1alpha1
+  kind: PullPolicyTransformer
+  metadata:
+    name: set-pull-policy
+    annotations:
+      config.kubernetes.io/function: |
+        container:
+          image: blachniet/kustomize-plugins:latest
+  images:
+  - name: nginx
+    newPullPolicy: Always
+  - name: busybox
+    newPullPolicy: IfNotPresent
