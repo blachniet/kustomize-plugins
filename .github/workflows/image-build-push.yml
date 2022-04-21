@@ -2,11 +2,10 @@ name: Image build and push
 
 on:
   workflow_dispatch:
-
-inputs:
-  imageTag:
-    description: 'Tag to apply to the image.'
-    required: true
+    inputs:
+      imageTag:
+        description: 'Tag to apply to the image.'
+        required: true
 
 env:
   IMAGE_NAME: ${{ github.repository }}
