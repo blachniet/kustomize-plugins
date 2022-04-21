@@ -30,4 +30,4 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: ghcr.io/${{ env.IMAGE_NAME }}:${{ env.INPUT_IMAGETAG }}
+        tags: ghcr.io/${{ env.IMAGE_NAME }}:${{ github.event.inputs.imageTag }}
