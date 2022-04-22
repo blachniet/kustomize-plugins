@@ -1,11 +1,8 @@
 name: Image build and push
 
 on:
-  workflow_dispatch:
-    inputs:
-      imageTag:
-        description: 'Tag to apply to the image.'
-        required: true
+  release:
+    types: [published]
 
 env:
   IMAGE_NAME: ${{ github.repository }}
@@ -30,4 +27,4 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: ghcr.io/${{ env.IMAGE_NAME }}:${{ github.event.inputs.imageTag }}
+        tags: ghcr.io/${{ env.IMAGE_NAME }}:${{ github.ref }}
