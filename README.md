@@ -26,7 +26,7 @@ metadata:
   annotations:
     config.kubernetes.io/function: |
       container:
-        image: blachniet/kustomize-plugins:latest
+        image: ghcr.io/blachniet/kustomize-plugins:0.1.3
 images:
 - name: nginx
   newPullPolicy: Always
@@ -55,10 +55,29 @@ go run main.go gen .
 Build the Docker image and run an example.
 
 ```sh
-docker build . -t blachniet/kustomize-plugins:latest \
+docker build . -t ghcr.io/blachniet/kustomize-plugins:dev \
     && kubectl kustomize --enable-alpha-plugins examples/pull-policy-transformer \
     | less
 ```
+
+### Release checklist
+
+1. List existing releases and choose the next release version.
+
+    ```sh
+    gh release list
+    ```
+
+1. Update documentation and examples with the new version number. This is a manual step. Search the repository for `ghcr.io/blachniet/kustomize-plugins:`.
+1. Commit changes, push and create the release.
+
+    ```sh
+    git commit <updated-files>
+    git push
+    gh release create
+    ```
+
+1. Confirm that GitHub workflows publish the new Docker image.
 
 ## Resources
 
