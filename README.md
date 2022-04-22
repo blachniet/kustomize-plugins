@@ -26,7 +26,7 @@ metadata:
   annotations:
     config.kubernetes.io/function: |
       container:
-        image: ghcr.io/blachniet/kustomize-plugins:0.1.3
+        image: ghcr.io/blachniet/kustomize-plugins:0.2.0
 images:
 - name: nginx
   newPullPolicy: Always
