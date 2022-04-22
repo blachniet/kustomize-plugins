@@ -57,12 +57,18 @@ docker build . -t ghcr.io/blachniet/kustomize-plugins:dev \
     ```
 
 1. Update documentation and examples with the new version number. This is a manual step. Search the repository for `ghcr.io/blachniet/kustomize-plugins:`.
-1. Commit changes, push and create the release.
+1. Commit and push the changes.
 
     ```sh
     git commit <updated-files>
     git push
-    gh release create
+    ```
+
+1. Ensure the [workflows pass][1].
+1. Create the release.
+
+    ```sh
+    gh release create vX.Y.Z
     ```
 
 1. Confirm that GitHub workflows publish the new Docker image.
@@ -74,3 +80,4 @@ docker build . -t ghcr.io/blachniet/kustomize-plugins:dev \
 
 [ImageTagTransformer]: https://kubectl.docs.kubernetes.io/references/kustomize/builtins/#_imagetagtransformer_
 [Plugin feature status]: https://kubectl.docs.kubernetes.io/guides/extending_kustomize/#plugin-feature-status
+[1]: https://github.com/blachniet/kustomize-plugins/actions
